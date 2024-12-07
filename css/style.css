@@ -1,0 +1,87 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+/* Header styling */
+header {
+    background-image: url("../images/headerBackground.jpg");
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    height: 700px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+.login-link {
+    position: absolute; /* Position relative to the header */
+    top: 20px; /* Adjust vertical position */
+    right: 20px; /* Align to the right */
+}
+
+.login-link a {
+    color: #fff;
+    text-decoration: none;
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    border-radius: 5px;
+}
+
+.search-bar {
+    margin-top: 20px;
+}
+
+.search-bar input, .search-bar button {
+    padding: 10px;
+    margin: 5px;
+}
+
+/* Main content styling */
+main {
+    padding: 20px;
+}
+
+.event-section h2 {
+    color: #333;
+}
+
+.event-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.event-card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.event-card button {
+    background-color: #4CAF50;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+/* Footer styling */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    width: 100%;
+    bottom: 0;
+}
