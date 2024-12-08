@@ -17,15 +17,21 @@ $message = "";
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = $_POST['email'];
     $password = $_POST['password'];
+    $username = $_POST['username'];
+    $phone_number = $_POST['phone_number'];
+    $user_type = 'attendee';
 
     $hashed_password = password_hash($password, PASSWORD_BCRYPT);
 
-    $query = "INSERT INTO User (email, password) VALUES (:email, :password)";
+    $query = "INSERT INTO User (email, password, username, phone_number, created_at, user_type) VALUES (:email, :password, :username, :phone_number, NOW(), :user_type)";
     $stmt = $conn->prepare($query);
 
     try {
         $stmt->bindParam(':email', $email);
         $stmt->bindParam(':password', $hashed_password);
+        $stmt->bindParam(':phone_number', $phone_number);
+        $stmt->bindParam(':username', $username);
+        $stmt->bindParam(':user_type', $user_type);
         $stmt->execute();
         $message = "Signup successful! You can now login.";
     } catch (PDOException $e) {
@@ -48,13 +54,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
     <div class="form-container">
-        <?php if ($message): ?>
+        <?php if ($message): ?> 
             <div class="message"><?= htmlspecialchars($message) ?></div>
         <?php endif; ?>
 
         <h1>Signup</h1>
         <form method="POST">
+            <input type="username" name="username" placeholder="Username" required> 
             <input type="email" name="email" placeholder="Email" required>
+            <input type="number" name="phone_number" placeholder="Phone Number" required>
             <input type="password" name="password" placeholder="Password" required>
             <button type="submit">Signup</button>
         </form>

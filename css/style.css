@@ -19,10 +19,23 @@ header {
     background-position: 50% 50%;
 }
 
-.login-link {
+.header-content {
     position: absolute; /* Position relative to the header */
     top: 20px; /* Adjust vertical position */
-    right: 20px; /* Align to the right */
+    right: 20px;
+    
+}
+
+.login-link {
+    display: inline-block; /* Ensures buttons are aligned horizontally */
+    margin: 0 10px; /* Adds horizontal space between the buttons */
+    padding: 10px 20px; /* Makes the buttons larger and more clickable */
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
 }
 
 .login-link a {
