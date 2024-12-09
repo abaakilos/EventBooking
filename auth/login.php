@@ -3,6 +3,7 @@
 
 include_once '../config/init.php';
 
+session_start();
 
 
 try {
@@ -27,6 +28,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($user && password_verify($password, $user['password'])) {
         $message = "Login successful!";
+        $_SESSION["user_id"] = $user["user_id"];
+        $_SESSION["username"] = $user["username"];
+        $_SESSION["user_type"] = $user["user_type"];
+        $_SESSION["email"] = $user["email"];
+        header("Location: ../index.php");
         // Add session or redirect logic here
     } else {
         $message = "Invalid email or password.";

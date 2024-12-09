@@ -1,3 +1,12 @@
+<?php
+session_start(); // Start the session
+
+$isLoggedIn = isset($_SESSION['user_id']); // Check if the user is logged in
+?>
+
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,13 +18,28 @@
 <body>
     <!-- Header Section -->
     <header>
-        <div class="header-content">
+        <!-- <div class="header-content">
             <div class="login-link">
                 <a href="./auth/login.php">Login</a>
             </div>
             <div class="login-link">
                 <a href="./auth/signup.php">Signup</a>
             </div>
+        </div> -->
+        <div class="header-content">
+            <?php if ($isLoggedIn): ?>
+
+                    <p>Welcome, <?= htmlspecialchars($_SESSION['username']) ?>!</p>
+                    <a href="./auth/logout.php" class="login-link">Logout</a>
+
+            <?php else: ?>
+                <div class="login-link">
+                    <a href="./auth/login.php">Login</a>
+                </div>
+                <div class="login-link">
+                    <a href="./auth/signup.php">Signup</a>
+                </div>
+            <?php endif; ?>
         </div>
         <img src="./images/headerLogo.png" />
         <div class="search-bar">

@@ -1,9 +1,9 @@
 <?php
-// config.php: Database Configuration
+// Start the session to track login state
+session_start();
 
+// Include database configuration
 include_once '../config/init.php';
-
-
 
 try {
     $conn = new PDO("mysql:host=$server; dbname=$db", $user, $password);
@@ -12,9 +12,9 @@ try {
     die("Connection failed: " . $e->getMessage());
 }
 
-// Handle Form Submission
+// Handle Signup Form Submission
 $message = "";
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['signup'])) {
     $email = $_POST['email'];
     $password = $_POST['password'];
     $username = $_POST['username'];
@@ -42,6 +42,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 }
+
+// Check if the user is logged in
+$isLoggedIn = isset($_SESSION['user_id']);
 ?>
 
 <!DOCTYPE html>
@@ -49,23 +52,38 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Signup</title>
+    <title>Home</title>
     <link rel="stylesheet" href="../css/auth.css">
 </head>
 <body>
-    <div class="form-container">
-        <?php if ($message): ?> 
-            <div class="message"><?= htmlspecialchars($message) ?></div>
+    <div class="navbar">
+        <?php if ($isLoggedIn): ?>
+            <!-- If the user is logged in, show the Logout button -->
+            <p>Welcome, <?= htmlspecialchars($_SESSION['username']) ?>!</p>
+            <a href="logout.php" class="btn">Logout</a>
+        <?php else: ?>
+            <!-- If the user is not logged in, show Login and Signup buttons -->
+            <a href="login.php" class="btn">Login</a>
+            <a href="signup.php" class="btn">Signup</a>
         <?php endif; ?>
-
-        <h1>Signup</h1>
-        <form method="POST">
-            <input type="username" name="username" placeholder="Username" required> 
-            <input type="email" name="email" placeholder="Email" required>
-            <input type="number" name="phone_number" placeholder="Phone Number" required>
-            <input type="password" name="password" placeholder="Password" required>
-            <button type="submit">Signup</button>
-        </form>
     </div>
+
+    <!-- Display the Signup Form -->
+    <?php if (!$isLoggedIn): ?>
+        <div class="form-container">
+            <?php if ($message): ?> 
+                <div class="message"><?= htmlspecialchars($message) ?></div>
+            <?php endif; ?>
+
+            <h1>Signup</h1>
+            <form method="POST">
+                <input type="username" name="username" placeholder="Username" required> 
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="number" name="phone_number" placeholder="Phone Number" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <button type="submit" name="signup">Signup</button>
+            </form>
+        </div>
+    <?php endif; ?>
 </body>
 </html>
