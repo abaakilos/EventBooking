@@ -1,0 +1,93 @@
+/* Basic reset and typography */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #f8f9fa;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Header and Footer are handled separately, we'll leave them as is */
+
+/* Main content section styling */
+main {
+    flex: 1;  /* Ensures that the main content takes up the available space */
+    padding: 30px 15px;
+    max-width: 900px;
+    margin: 0 auto;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.event-details h1 {
+    font-size: 32px;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.event-details p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: #34495e;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.event-details p:first-of-type {
+    font-size: 20px;
+    font-weight: 600;
+    color: #2980b9;
+}
+
+.event-details p:last-of-type {
+    margin-bottom: 30px;
+}
+
+.event-details .event-link {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.event-details .event-link a {
+    text-decoration: none;
+    background-color: #3498db;
+    color: #fff;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 30px;
+    transition: background-color 0.3s;
+}
+
+.event-details .event-link a:hover {
+    background-color: #2980b9;
+}
+
+/* For responsiveness */
+@media (max-width: 768px) {
+    .event-details h1 {
+        font-size: 28px;
+    }
+
+    .event-details p {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .event-details h1 {
+        font-size: 24px;
+    }
+
+    .event-details p {
+        font-size: 14px;
+    }
+}

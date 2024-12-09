@@ -78,3 +78,25 @@ INSERT INTO Booking (event_id, user_id, booking_status, booked_at)
 VALUES 
 (1, 1, 'confirmed', NOW()), -- John Doe booked the Live Concert
 (2, 1, 'pending', NOW()); -- John Doe booked the Tech Meetup
+
+
+-- Trigger
+DROP TRIGGER IF EXISTS eventBooking;
+DELIMITER $$
+
+CREATE TRIGGER eventBooking
+BEFORE INSERT 
+ON Booking
+FOR EACH ROW 
+BEGIN
+    IF (SELECT capacity FROM Event WHERE event_id = NEW.event_id) = 0 THEN 
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = "Event not booked, fully booked";
+    END IF;
+    
+    UPDATE Event 
+    SET capacity = capacity - 1
+    WHERE event_id = NEW.event_id;
+END $$
+
+DELIMITER ;
