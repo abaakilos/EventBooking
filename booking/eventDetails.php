@@ -5,7 +5,6 @@ include_once '../config/init.php';
 // Fetch Event ID from the URL and event details
 if (isset($_GET['id'])) {
 
-    $conn = new PDO("mysql:host=$server; dbname=$db", $user, $password);
 
     $eventId = $_GET['id'];
 
@@ -43,6 +42,7 @@ if (isset($_GET['id'])) {
             <p>Organized by: <?= htmlspecialchars($event['organizer_name']) ?></p>
             <p>Date: <?= htmlspecialchars($event['start_time']) ?></p>
             <p>Description: <?= nl2br(htmlspecialchars($event['description'])) ?></p>
+            <p>Seats available: <?= htmlspecialchars($event['capacity']) ?></p>
 
             <!-- Booking Form -->
             <?php if (isset($_SESSION['user_id'])): ?>
@@ -51,7 +51,7 @@ if (isset($_GET['id'])) {
                     <button type="submit">Book Now</button>
                 </form>
             <?php else: ?>
-                <p>You need to <a href="login.php">login</a> to book this event.</p>
+                <p>You need to <a href="../auth/login.php">login</a> to book this event.</p>
             <?php endif; ?>
         </section>
     </main>

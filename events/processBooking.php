@@ -2,7 +2,6 @@
 session_start();
 include_once '../config/init.php';
 
-$conn = new PDO("mysql:host=$server; dbname=$db", $user, $password);
 
 
 if (!isset($_SESSION['user_id'])) {
