@@ -12,7 +12,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="../EventBooking/css/style.css">
     <title>Event Booking Home</title>
 </head>
 <body>
@@ -23,7 +23,7 @@
             include './header/header.php'; // Include the header
         ?>
 
-        <img src="./images/headerLogo.png" />
+        <img src="../EventBooking/images/headerLogo.png" />
         <div class="search-bar">
             <input type="text" placeholder="Location">
             <input type="date" placeholder="Date">
@@ -43,13 +43,13 @@
 
     <!-- Footer Section -->
     <?php 
-        include './footer/footer.php'; // Include the header
+        include '../EventBooking/footer/footer.php'; // Include the header
     ?>
 
     <script>
         // JavaScript to load events dynamically
         document.addEventListener('DOMContentLoaded', function() {
-        fetch('./events/getEvents.php')
+        fetch('/EventBooking/events/getEvents.php')
             .then(response => response.json())
             .then(events => {
                 let eventList = document.getElementById('event-list');
@@ -59,7 +59,7 @@
                             <h3>${event.title}</h3>
                             <p>Organized by: ${event.organizer}</p>
                             <p>${event.date} - ${event.time}</p>
-                            <a href="./booking/eventDetails.php?id=${event.event_id}" class="event-link">
+                            <a href="/EventBooking/booking/eventDetails.php?id=${event.event_id}" class="event-link">
                                 <button>View Details</button>
                             </a>
                         </div>

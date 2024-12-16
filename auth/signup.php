@@ -34,6 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['signup'])) {
         $stmt->bindParam(':user_type', $user_type);
         $stmt->execute();
         $message = "Signup successful! You can now login.";
+        header("Location: /EventBooking/auth/login.php");
     } catch (PDOException $e) {
         if ($e->getCode() === '23000') { // Duplicate entry error
             $message = "Email is already registered.";

@@ -51,7 +51,7 @@ if (isset($_GET['id'])) {
                     <button type="submit">Book Now</button>
                 </form>
             <?php else: ?>
-                <p>You need to <a href="../auth/login.php">login</a> to book this event.</p>
+                <p>You need to <a href="/EventBooking/auth/login.php">login</a> to book this event.</p>
             <?php endif; ?>
         </section>
     </main>

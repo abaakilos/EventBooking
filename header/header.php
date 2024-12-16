@@ -18,14 +18,14 @@
         <?php if ($isLoggedIn): ?>
 
             <p>Welcome, <?= htmlspecialchars($_SESSION['username']) ?>!</p>
-            <a href="../auth/logout.php" class="login-link">Logout</a>
+            <a href="/EventBooking/auth/logout.php" class="login-link">Logout</a>
 
             <?php else: ?>
             <div class="login-link">
-            <a href="../auth/login.php">Login</a>
+            <a href="/EventBooking/auth/login.php">Login</a>
             </div>
             <div class="login-link">
-            <a href="../auth/signup.php">Signup</a>
+            <a href="/EventBooking/auth/signup.php">Signup</a>
             </div>
 
         <?php endif; ?>
