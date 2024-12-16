@@ -63,8 +63,8 @@ $isLoggedIn = isset($_SESSION['user_id']);
             <a href="logout.php" class="btn">Logout</a>
         <?php else: ?>
             <!-- If the user is not logged in, show Login and Signup buttons -->
-            <a href="login.php" class="btn">Login</a>
-            <a href="signup.php" class="btn">Signup</a>
+            <!-- <a href="login.php" class="btn">Login</a>
+            <a href="signup.php" class="btn">Signup</a> -->
         <?php endif; ?>
     </div>
 

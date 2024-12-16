@@ -1,6 +1,6 @@
 <?php
-session_start();
-include_once '../config/init.php';
+    session_start();
+    include_once '../config/init.php';
 
 // Fetch Event ID from the URL and event details
 if (isset($_GET['id'])) {

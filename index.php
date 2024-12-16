@@ -43,8 +43,8 @@
 
     <!-- Footer Section -->
     <?php 
-            include './footer/footer.php'; // Include the header
-        ?>
+        include './footer/footer.php'; // Include the header
+    ?>
 
     <script>
         // JavaScript to load events dynamically
